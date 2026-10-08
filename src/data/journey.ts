@@ -1,3 +1,4 @@
+import { earlierEducation, leadership } from "./achievements";
 import { profile } from "./profile";
 import { projects } from "./projects";
 
@@ -14,7 +15,7 @@ export interface Milestone {
 }
 
 export const journeySection = {
-  index: "04",
+  index: "06",
   eyebrow: "Journey",
   title: "From first model to full systems.",
   description:
@@ -23,16 +24,32 @@ export const journeySection = {
 
 const deployed = projects.filter((p) => p.status === "deployed");
 const inProgress = projects.filter((p) => p.status === "in-progress");
+const [intermediate, ssc] = earlierEducation;
 
-/**
- * Only verified milestones. Add internships, hackathons or certifications
- * here as new entries — the timeline renders whatever is listed.
- */
+/** Only verified milestones from the resume, in order. */
 export const milestones: readonly Milestone[] = [
+  {
+    when: ssc.years,
+    title: `${ssc.level} — ${ssc.score}`,
+    detail: ssc.school + ".",
+    status: "done",
+  },
+  {
+    when: "2023",
+    title: `${intermediate.level} — ${intermediate.score}`,
+    detail: `${intermediate.school}, with a district top rank of 465/470.`,
+    status: "done",
+  },
   {
     when: String(education.startYear),
     title: `Started B.Tech at ${education.university}`,
     detail: "Computer Science and Engineering (Business Systems).",
+    status: "done",
+  },
+  {
+    when: "2024",
+    title: `${leadership.role}`,
+    detail: `${leadership.org}: 15+ webinars, 2 hackathons and the club website.`,
     status: "done",
   },
   ...deployed.map(
@@ -43,6 +60,12 @@ export const milestones: readonly Milestone[] = [
       status: "done",
     }),
   ),
+  {
+    when: "Aug 2026",
+    title: "Microsoft Certified: Azure Fundamentals",
+    detail: "AZ-900 certification from Microsoft.",
+    status: "done",
+  },
   {
     when: "Now",
     title: `Building ${inProgress.map((p) => p.title).join(" and ")}`,

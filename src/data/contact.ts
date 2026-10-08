@@ -1,5 +1,5 @@
 export const contactSection = {
-  index: "05",
+  index: "07",
   eyebrow: "Contact",
   title: "Let's build something together.",
   description:

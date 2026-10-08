@@ -12,6 +12,7 @@ import {
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/BrandIcons";
 import { profile } from "@/data/profile";
 import { navItems } from "@/data/site";
+import { unlock } from "@/lib/quest";
 import { cn } from "@/lib/utils";
 
 /** Fire this event (e.g. from the navbar button) to open the palette. */
@@ -111,6 +112,7 @@ export function CommandPalette() {
       setCopied(false);
       dialog.showModal();
       inputRef.current?.focus();
+      unlock("quick-menu");
     };
     const onKeyDown = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {

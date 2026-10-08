@@ -22,7 +22,7 @@ export function Navbar() {
       if (event.key === "Escape") close();
     };
     // Close the mobile panel if the viewport grows into the desktop layout.
-    const desktop = window.matchMedia("(min-width: 48rem)");
+    const desktop = window.matchMedia("(min-width: 64rem)");
 
     window.addEventListener("keydown", onKeyDown);
     desktop.addEventListener("change", close);
@@ -46,16 +46,16 @@ export function Navbar() {
           >
             {profile.initials}
           </span>
-          {profile.name}
+          <span className="hidden sm:inline">{profile.name}</span>
         </a>
 
-        <nav aria-label="Primary" className="hidden md:block">
-          <ul className="flex items-center gap-1">
+        <nav aria-label="Primary" className="hidden lg:block">
+          <ul className="flex items-center gap-0.5">
             {navItems.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="rounded-full px-3 py-2 text-nav text-foreground-secondary transition-colors duration-300 hover:bg-surface-elevated hover:text-foreground"
+                  className="rounded-full px-2.5 py-2 text-nav text-foreground-secondary transition-colors duration-300 hover:bg-surface-elevated hover:text-foreground"
                 >
                   {item.label}
                 </a>
@@ -76,7 +76,7 @@ export function Navbar() {
           </button>
           <button
             type="button"
-            className="-mr-2 inline-flex size-11 items-center justify-center rounded-full text-foreground transition-colors hover:bg-surface-elevated md:hidden"
+            className="-mr-2 inline-flex size-11 items-center justify-center rounded-full text-foreground transition-colors hover:bg-surface-elevated lg:hidden"
             aria-expanded={open}
             aria-controls={MOBILE_NAV_ID}
             aria-label={open ? "Close menu" : "Open menu"}
@@ -96,7 +96,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={baseTransition}
-            className="border-t border-border bg-background/95 md:hidden"
+            className="border-t border-border bg-background/95 lg:hidden"
           >
             <Container as="ul" className="flex flex-col py-3">
               {navItems.map((item) => (

@@ -1,4 +1,4 @@
-import { ArrowDown, Download, MapPin } from "lucide-react";
+import { ArrowDown, Download, Gamepad2, MapPin } from "lucide-react";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { RoleRotator } from "@/components/motion/RoleRotator";
 import { ArrowLink } from "@/components/ui/ArrowLink";
@@ -40,8 +40,7 @@ export function Hero() {
 
           <FadeIn delay={0.08}>
             <h1 id="hero-title" className="mt-6 max-w-2xl text-display font-semibold">
-              {hero.headline.before}{" "}
-              <span className="text-gradient">{hero.headline.highlight}</span>{" "}
+              {hero.headline.before} <span className="text-gradient">{hero.headline.highlight}</span>{" "}
               {hero.headline.after}
             </h1>
           </FadeIn>
@@ -54,8 +53,7 @@ export function Hero() {
 
           <FadeIn delay={0.16}>
             <p className="mt-5 max-w-reading text-lead text-foreground-secondary">
-              {hero.intro.beforeUniversity}{" "}
-              <span className="whitespace-nowrap">{hero.intro.university}</span>
+              {hero.intro.beforeUniversity} <span className="whitespace-nowrap">{hero.intro.university}</span>
               {hero.intro.afterUniversity}
             </p>
           </FadeIn>
@@ -68,9 +66,7 @@ export function Hero() {
                   className="flex flex-col-reverse gap-1.5 border-l border-border pl-4 first:border-l-0 first:pl-0 sm:pl-6"
                 >
                   <dt className="eyebrow">{item.label}</dt>
-                  <dd className="text-title font-semibold whitespace-nowrap text-foreground">
-                    {item.value}
-                  </dd>
+                  <dd className="text-title font-semibold whitespace-nowrap text-foreground">{item.value}</dd>
                 </div>
               ))}
             </dl>
@@ -92,6 +88,14 @@ export function Hero() {
                   {hero.resumeCtaLabel}
                 </Button>
               )}
+              <Button href={hero.playCta.href} variant="text">
+                <Gamepad2
+                  size={16}
+                  aria-hidden="true"
+                  className="text-pink transition-transform duration-300 ease-smooth group-hover:rotate-12"
+                />
+                {hero.playCta.label}
+              </Button>
             </div>
           </FadeIn>
 

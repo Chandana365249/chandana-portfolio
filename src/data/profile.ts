@@ -69,5 +69,5 @@ export const profile: Profile = {
     linkedin: "https://www.linkedin.com/in/chandana-gandla-914314320/",
     leetcode: null,
   },
-  resumeUrl: null,
+  resumeUrl: "/Chandana_Gandla_Resume.pdf",
 };

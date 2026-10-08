@@ -52,7 +52,7 @@ export interface SkillCategory {
 }
 
 export const skillsSection = {
-  index: "03",
+  index: "04",
   eyebrow: "Technical Expertise",
   title: "Tools I use to turn ideas into systems.",
   description:

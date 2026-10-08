@@ -7,12 +7,17 @@ import { ProjectDetail } from "@/components/projects/ProjectDetail";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { projects, projectsSection, type ProjectId } from "@/data/projects";
+import { unlock } from "@/lib/quest";
 
 const HEADING_ID = "projects-title";
 
 /** Featured project first at full width, then the rest side by side. */
 export function Projects() {
-  const [openId, setOpenId] = useState<ProjectId | null>(null);
+  const [openId, setOpenIdState] = useState<ProjectId | null>(null);
+  const setOpenId = (id: ProjectId | null) => {
+    if (id) unlock("case-study");
+    setOpenIdState(id);
+  };
   const openProject = projects.find((project) => project.id === openId) ?? null;
   const [featured, ...supporting] = projects;
 

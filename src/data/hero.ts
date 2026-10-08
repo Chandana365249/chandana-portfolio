@@ -32,5 +32,6 @@ export const hero = {
     ],
   },
   primaryCta: { label: "Explore My Work", href: "#projects" },
+  playCta: { label: "Play with my portfolio", href: "#playground" },
   resumeCtaLabel: "Download Resume",
 } as const;

@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Background } from "@/components/layout/Background";
+import { Confetti } from "@/components/game/Confetti";
+import { QuestTracker } from "@/components/game/QuestTracker";
 import { CommandPalette } from "@/components/layout/CommandPalette";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
@@ -81,6 +83,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </div>
           <CommandPalette />
           <Spotlight />
+          <QuestTracker />
+          <Confetti />
         </MotionProvider>
       </body>
     </html>

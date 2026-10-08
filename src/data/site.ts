@@ -26,10 +26,11 @@ export const site = {
 
 /** Section anchors, in page order. */
 export const navItems: readonly NavItem[] = [
-  { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
+  { label: "Playground", href: "#playground" },
   { label: "Skills", href: "#skills" },
+  { label: "Achievements", href: "#achievements" },
   { label: "Journey", href: "#journey" },
   { label: "Contact", href: "#contact" },
 ];
