@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chandana Gandla — Portfolio
 
-## Getting Started
+Personal portfolio built with Next.js (App Router), TypeScript, Tailwind CSS v4, Framer Motion and Lucide.
 
-First, run the development server:
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/            layout, page, global styles, generated icon and Open Graph image
+  components/
+    layout/       Navbar, Footer, Background
+    motion/       MotionProvider (reduced-motion aware), FadeIn, Reveal (scroll reveal)
+    projects/     ProjectCard, ProjectDetail (case-study dialog), ArchitectureDiagram, visuals/
+    sections/     Hero, Projects, Skills
+    skills/       SkillCategoryCard, SkillChip, SkillProjects (applied-in panel), StackFlow
+    ui/           Button, ArrowLink, Container, Section, SectionHeading, TagList
+  data/           profile.ts, site.ts, hero.ts, projects.ts, skills.ts (all content lives here)
+  lib/            utils (cn), motion (shared easing/transitions)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Updating content
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Personal details and links:** `src/data/profile.ts`. Social links and the resume URL are `null` until real URLs are added; the UI hides them while they are `null`.
+- **Projects:** `src/data/projects.ts`. Add `links.github` / `links.demo` to show code and demo buttons; they stay hidden until set.
+- **Skills:** `src/data/skills.ts`. Skill-to-project links are derived from `projects.ts` automatically.
+- **Site URL:** set `NEXT_PUBLIC_SITE_URL` to the production domain for canonical and Open Graph URLs (defaults to `http://localhost:3000`).
+- **Design tokens:** colours, type scale, spacing and motion live in the `@theme` block of `src/app/globals.css`.
