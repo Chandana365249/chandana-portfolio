@@ -2,6 +2,7 @@ import { ArrowUpRight, Star } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/BrandIcons";
 import { getGitHubActivity, githubUsername } from "@/lib/github";
 import { cn } from "@/lib/utils";
+import { SurpriseRepo } from "./SurpriseRepo";
 
 /** GitHub's own language colours for the common cases; others use violet. */
 const languageColors: Record<string, string> = {
@@ -85,20 +86,13 @@ export async function GitHubPanel() {
       <span aria-hidden="true" className="bg-brand absolute inset-x-0 top-0 h-px" />
       <PanelHeader live />
 
-      <dl className="mt-6 grid grid-cols-2 gap-3">
-        {[
-          { label: "Public repos", value: activity.publicRepos },
-          { label: "Followers", value: activity.followers },
-        ].map((stat) => (
-          <div
-            key={stat.label}
-            className="flex flex-col-reverse gap-1 rounded-xl border border-border bg-background/40 p-4"
-          >
-            <dt className="eyebrow">{stat.label}</dt>
-            <dd className="text-gradient text-heading font-semibold">{stat.value}</dd>
-          </div>
-        ))}
-      </dl>
+      <div className={cn("mt-6 grid gap-3", activity.pool.length > 0 && "grid-cols-2")}>
+        <dl className="flex flex-col-reverse gap-1 rounded-xl border border-border bg-background/40 p-4">
+          <dt className="eyebrow">Public repos</dt>
+          <dd className="text-gradient text-heading font-semibold">{activity.publicRepos}</dd>
+        </dl>
+        {activity.pool.length > 0 && <SurpriseRepo pool={activity.pool} />}
+      </div>
 
       {activity.languages.length > 0 && (
         <div className="mt-6">

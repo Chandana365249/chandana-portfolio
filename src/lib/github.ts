@@ -20,7 +20,8 @@ export interface GitHubActivity {
   username: string;
   profileUrl: string;
   publicRepos: number;
-  followers: number;
+  /** Every public, non-fork, non-archived repo — the pool for "Surprise me". */
+  pool: readonly { name: string; url: string; description: string | null }[];
   /** Most-used languages across public, non-fork repos, most common first. */
   languages: readonly { name: string; count: number }[];
   recent: readonly GitHubRepo[];
@@ -30,7 +31,6 @@ interface ApiUser {
   login: string;
   html_url: string;
   public_repos: number;
-  followers: number;
 }
 
 interface ApiRepo {
@@ -83,7 +83,7 @@ export async function getGitHubActivity(): Promise<GitHubActivity | null> {
     username: user.login,
     profileUrl: user.html_url,
     publicRepos: user.public_repos,
-    followers: user.followers,
+    pool: own.map((repo) => ({ name: repo.name, url: repo.html_url, description: repo.description })),
     languages: [...languageCounts]
       .map(([name, count]) => ({ name, count }))
       .sort((a, b) => b.count - a.count)

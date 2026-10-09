@@ -93,7 +93,7 @@ export const earlierEducation = [
     score: "96.2%",
     years: "2021 – 2023",
   },
-  { school: "Good Shepherd English Medium School, Nandyal", level: "SSC", score: "94%", years: "2021" },
+  { school: "Good Shepherd English Medium School, Nandyal", level: "SSC", score: "93%", years: "2021" },
 ] as const;
 
 export const coursework = [
